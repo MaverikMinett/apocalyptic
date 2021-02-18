@@ -1,0 +1,29 @@
+
+
+
+
+<div class="container nav-container">
+    <nav>
+
+    <div class="app-title">
+      Apocalyptic
+    </div>
+
+    <div ngbDropdown class="d-inline-block" >
+        <button class="btn  user-menu" id="dropdownBasic1" ngbDropdownToggle>
+            <div class="avatar avatar-xs"><img src="assets/{{username}}.png"></div>
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <a routerLink="/user/edit" ngbDropdownItem>My account</a>
+          <button ngbDropdownItem (click)="logout()">Logout</button>
+          <!-- <button ngbDropdownItem>Something else is here</button> -->
+        </div>
+      </div>
+    </nav>
+</div>
+
+
+<div class="container card-container">
+    <app-users></app-users>
+</div>
+

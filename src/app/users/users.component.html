@@ -1,0 +1,28 @@
+
+
+<div class="card" *ngIf="items.length">
+
+    <div class="card-header">
+       Unicorns
+    </div>
+
+    <div class="card-body">
+        
+        <ul class="list-group list-group-flush no-text-select">
+            <li 
+                *ngFor="let item of items" 
+                class="list-group-item list-group-item-action"
+                (click)="open(item)" 
+                >
+                
+                <div class="avatar avatar-sm">
+                    <img src="assets/{{item.username}}.png">
+                </div>
+                
+                {{ item.first_name }} {{ item.last_name }}
+            </li>
+        </ul>
+
+    </div>
+
+</div>

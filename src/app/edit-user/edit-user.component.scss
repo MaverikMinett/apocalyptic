@@ -1,0 +1,136 @@
+
+.card-container {
+    margin-top: 22px;
+}
+
+
+
+nav {
+    margin: 22px auto;
+    width: 450px;
+    max-width: 95%;
+    // max-width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.btn-back {
+    text-shadow: var(--text-shadow);
+    color: white;
+}
+
+
+.btn-back:hover {
+    color: var(--purple-2);
+}
+
+
+
+.card {
+    width: 450px;
+    max-width: 95%;
+}
+
+
+.edit-user-card {
+    .avatar {
+        background-color: var(--light-purple-1);
+        width: 140px;
+        height: 140px;
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translate(-50%,0%);
+        padding: 4px;
+        border: 4px solid white;
+    }
+}
+
+
+.card-header {
+    height: 90px;
+    position: relative;
+}
+
+.card-body {
+    padding-top: 0px;
+    margin-top: 70px;
+}
+
+.avatar {
+    z-index: 51;
+}
+
+.card-title {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    text-align: left;
+    font-size: 16px;
+}
+
+.username {
+    text-align: left;
+    text-shadow: none;
+    // background: var(--purple-2);
+    // border-radius: 33px;
+    // z-index: 50;
+}
+
+.realname {
+    text-align: right;
+    color: white;
+    text-shadow: none;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+input[type="date"] {
+    padding-top: 0px;
+}
+
+.date-input-group {
+    position: relative;
+}
+
+.calendar-button {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+
+    button {
+        height: 100%;
+
+        path {
+            stroke: var(--light-purple-2);
+        }
+    }
+
+    button:focus,
+    button:active {
+        box-shadow: none;
+    }
+
+    button:hover {
+        background-color: transparent;
+        path {
+            stroke: var(--purple-1);
+        }
+    }
+}
+
+
+.invalid-feedback {
+    display: block;
+    position: absolute;
+    color: var(--error-color);
+    p {
+        margin-bottom: none;
+    }
+}
+
+
+

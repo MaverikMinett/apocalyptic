@@ -1,0 +1,26 @@
+
+.card {
+    border-style: none;
+    max-width: 95%;
+    margin: auto;
+    box-shadow: var(--shadow);
+    width: 450px;
+}
+
+.card-header {
+    background-image: var(--purple-gradient);
+    color: white;
+    text-shadow: var(--text-shadow);
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    font-family: "Inter var";
+}
+
+.card-actions {
+
+    margin-top:22px;
+
+    justify-content: center;
+    display: flex;
+}

@@ -1,0 +1,8 @@
+<router-outlet></router-outlet>
+
+<app-toasts></app-toasts>
+
+<div class="progress progress-striped active" *ngIf="(showProgressBar | async)">
+    <div class="push"></div>
+    <div class="progress-bar progress-bar" style="width: 30%;"></div>
+</div>

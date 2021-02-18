@@ -1,0 +1,40 @@
+
+<div class="modal-header  modal-{{user?.username}}" 
+
+[ngStyle]="{'background-image': bannerImage()}"
+>
+
+    <div class="unicorn">
+        <img src="assets/{{user?.username}}.png">
+    </div>
+
+    <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button> 
+
+</div>
+
+<div class="modal-body">
+    <div class="username">{{ user?.username}}</div>
+    <div class="realname">{{ user?.first_name}} {{user?.last_name}}</div>
+
+    <div class="detail">
+        <div class="birthday">
+            <svg width="48" height="48" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
+            </svg>
+             {{ user?.date_of_birth | date: 'MM/dd/yyyy' }} 
+        </div>
+    
+        <div class="email">
+            <svg  width="48" height="48" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <a href="mailto:{{ user?.email }}">{{user?.email}}</a>
+        </div>
+    </div>
+
+
+</div>
+
+

@@ -1,0 +1,59 @@
+
+.btn {
+    border-style: none;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.btn-primary {
+    color: white;
+    background: var(--purple-2);
+    text-shadow: var(--text-shadow);
+}
+
+.btn-primary:hover {
+    background-color: var(--purple-1);
+}
+
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active, 
+.btn-primary:not(:disabled):not(.disabled).active, 
+.btn-outline-primary:not(:disabled):not(.disabled):active, 
+.btn-outline-primary:not(:disabled):not(.disabled).active, 
+.show > .btn-primary.dropdown-toggle
+{
+    background-color:var(--purple-2);
+
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):focus, 
+.btn-outline-primary:not(:disabled):not(.disabled):focus, 
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus, 
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus, 
+
+.btn-primary:not(:disabled):not(.disabled):focus, 
+.btn-primary:not(:disabled):not(.disabled):focus, 
+.btn-primary:not(:disabled):not(.disabled):active:focus, 
+.btn-primary:not(:disabled):not(.disabled).active:focus, 
+.show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(201, 100, 241, 0.25);
+}
+
+.btn-primary:disabled {
+    background-color: var(--purple-1);
+}
+
+.btn-login {
+    padding: 11px 22px;
+}
+
+.btn-outline-primary {
+    color: var(--purple-2);
+}
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: var(--purple-2);
+    border-color: var(--purple-2);
+}

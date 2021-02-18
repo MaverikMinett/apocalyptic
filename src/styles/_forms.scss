@@ -1,0 +1,36 @@
+
+.form-control {
+    height: 46px;
+    line-height: 46px;
+    font-size: 18px;
+    text-align: center;
+    border-color: var(--light-purple-1);
+    color: var(--purple-2);
+}
+
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(201, 100, 241, 0.25);
+    border-color:  var(--purple-1);
+    color:  var(--purple-2);
+}
+
+.form-control::placeholder
+{
+    color: var(--light-purple-1);
+}
+
+.form-control:focus::placeholder
+ {
+    color: var(--light-purple-2);
+}
+
+
+.form-group {
+    padding: 11px 0px;
+
+    label {
+        color: var(--purple-2)
+    }
+}
+

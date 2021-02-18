@@ -1,0 +1,29 @@
+
+/** progress bars **/
+@keyframes push{
+    0% {width: 0%;}
+    50% {width: 70%;}
+    100% {width: 0%;}
+}
+
+.push {
+    border-radius: 0.25em;
+    animation: push 2s linear infinite;
+    height:100%;
+    float:left; 
+}
+
+.progress {
+    position: fixed;
+    left: 0;
+    left: 0px;
+    width: 100vw;
+    top: 0px;
+    height: 3px;
+    border-radius: 0px;
+    background-color: transparent;
+}
+
+.progress-bar {
+    background-color: var(--purple-2);
+}

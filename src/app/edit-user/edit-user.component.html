@@ -1,0 +1,96 @@
+
+<div class="container nav-container">
+    <nav>
+        <a routerLink="/home" class="btn-back">
+            <svg height="48" width="48" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+            </svg>
+        </a>
+    </nav>
+</div>
+
+
+<div class="container card-container">
+
+
+
+    <div class="card edit-user-card" *ngIf="item">
+
+        <div class="card-header">
+
+            <div class="card-title">
+                <div class="username">{{ item.username }}</div>
+                <div class="realname">{{ item.first_name}} {{ item.last_name }}</div>
+            </div>
+
+           <div class="avatar avatar-lg" style="background-image: url(/assets/{{item.username}}-banner.svg);" *ngIf="item.username">
+               <img src="/assets/{{item.username}}.png">
+           </div>
+        </div>
+    
+        <div class="card-body">
+
+            <form #form="ngForm" (submit)="submit()">
+
+                <div class="form-group">
+                    <label>Birthday</label>
+                    <div class="date-input-group">
+                    <input 
+                        name="date_of_birth"
+                        #date_of_birth="ngModel" 
+                        #datepicker="ngbDatepicker" 
+                        [(ngModel)]="item.date_of_birth"
+                        type="text" 
+                        class="form-control" 
+                        placeholder="mm/dd/yyyy"
+                        [maxDate]="today"
+                        required
+                        ngbDatepicker 
+                        >
+                        <div class="calendar-button">
+                            <button class="btn calendar" (click)="datepicker.toggle()" type="button">
+                                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="invalid-feedback" *ngIf="date_of_birth.invalid">
+                        <p *ngIf="date_of_birth.errors.required">Birthday is required</p>
+                        <p *ngIf="item.date_of_birth && date_of_birth.errors.ngbDate.maxDate">Birthday cannot be greater than today</p>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input 
+                        name="email"
+                        #email="ngModel" 
+                        [(ngModel)]="item.email"
+                        type="email" 
+                        class="form-control" 
+                        email
+                        required
+                        >
+
+                        <div class="invalid-feedback" *ngIf="email.invalid">
+                            <p *ngIf="email.errors.required">Email is required</p>
+                            <p *ngIf="email.errors.email">Must be a valid email address</p>
+                        </div>
+
+                </div>
+
+                <div class="card-actions">
+                    <button type="submit" class="btn btn-primary btn-login" [disabled]="(!form.valid) || (!form.dirty) || requestInProgress">Save</button>
+                </div>
+            </form>
+            
+
+        </div>
+    
+    </div>
+    
+</div>
+

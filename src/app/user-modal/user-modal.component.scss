@@ -1,0 +1,78 @@
+
+
+.close:focus,
+.close:active {
+    border-style: none;
+}
+
+.modal-header {
+    height: 250px;
+    position: relative;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    .unicorn {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+
+        left: calc(50% - 75px);
+        top: 77px;
+
+        img {
+            max-width: 100%;
+        }
+
+    }
+}
+
+.modal-body {
+    // height: 200px;
+    text-align: center;
+}
+
+.username {
+    font-size: 42px;
+    line-height: 48px;
+    color: #521c82;
+}
+
+.realname, .birthday, .email {
+    font-size: 18px;
+    line-height: 48px;
+}
+
+.modal-body  svg {
+    margin-right: 8px;
+}
+
+.modal-body svg path {
+    stroke: var(--light-purple-2);
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.birthday {
+    color: var(--light-purple-2);
+}
+
+.email a {
+    color: var(--light-purple-2);
+}
+
+.realname {
+    color: var(--gray);
+}
+
+.modal-charlie {
+    .unicorn {
+        border-radius: 50%;
+        img {
+            border-radius: 50%;
+        }
+    }
+}
