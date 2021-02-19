@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { environment } from '../environments/environment'
 
-import { Subject, Observable } from 'rxjs'
+import { Subject, of } from 'rxjs'
 
 import { User } from './user'
 
@@ -22,7 +22,8 @@ export class UserService {
   }
 
   list() {
-
+    
+    /* quick and dirty caching */
     if ( ! this.users ) {
 
       const subject = new Subject()
@@ -41,10 +42,7 @@ export class UserService {
       return observable
     }
     else {
-      const subject = new Subject()
-      const observable = subject.asObservable()
-      setTimeout( () => { subject.next(this.users); subject.complete(); } )
-      return observable
+      return of(this.users) 
     }
     
   }

@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 
 import { UserService } from './user.service';
@@ -43,25 +43,18 @@ describe('UserService', () => {
     expect( httpClientSpy.get ).toHaveBeenCalledWith( apiPath )
   })
 
-  xit('list should cache values', () => {
+  it('list should cache values',() => {
     const subject = new Subject()
     const observable = subject.asObservable()
 
     const fakeData = [ { username: 'foobar', first_name: 'Foo', last_name: 'Bar' } ]
 
-    service.users = undefined
-    httpClientSpy.get.and.returnValue( observable )
-    service.list().subscribe( () => {
-      expect(httpClientSpy.get.calls.count()).toBe(1)
-      expect( service.users ).toEqual( fakeData )
+    service.users = fakeData
 
-      service.list().subscribe( (data) => {
-        expect(data).toEqual(fakeData)
-        expect(httpClientSpy.get.calls.count()).toBe(1)
-      })
-    } )
-    
-    subject.next(fakeData)
+    service.list().subscribe( (data) => {
+      expect(data).toEqual(fakeData)
+      expect(httpClientSpy.get.calls.count()).toBe(0)
+    })
 
   })
 

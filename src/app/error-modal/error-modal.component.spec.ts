@@ -29,4 +29,14 @@ describe('ErrorModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should populate', () => {
+    component.title = "Foo"
+    component.message = "bar"
+    fixture.detectChanges()
+
+    expect( fixture.debugElement.nativeElement.querySelector('.modal-title').innerText ).toEqual("Foo")
+    expect( fixture.debugElement.nativeElement.querySelector('.modal-body p').innerText ).toEqual("bar")
+  });
+
 });

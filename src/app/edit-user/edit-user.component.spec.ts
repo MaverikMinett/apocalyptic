@@ -122,24 +122,110 @@ describe('EditUserComponent', () => {
   })
 
 
-  xit('should display an error if a future date is entered', async () => {
+  it('should display an error if a future date is entered', async () => {
+    component.item = {...fakeData }
+    fixture.detectChanges()
+    await fixture.whenStable()
 
+    const dateInput = fixture.debugElement.nativeElement.querySelector('input[name="date_of_birth"]')
+
+    let date = new Date()
+    date.setDate(date.getDate() + 1)
+    dateInput.value = date.toLocaleDateString("en-US")
+    dateInput.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    await fixture.whenStable()
+
+    const error = dateInput.closest('.form-group').querySelector('.invalid-feedback p')
+    expect( error.innerHTML ).toEqual("Birthday cannot be greater than today")
+  })
+
+  it('should display an error if the date field is empty', async () => {
+    component.item = {...fakeData }
+    fixture.detectChanges();
+    await fixture.whenStable()
+
+    const input = fixture.debugElement.nativeElement.querySelector('input[name="date_of_birth"]')
+
+    input.value =  ""
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    await fixture.whenStable()
+
+    const error = input.closest('.form-group').querySelector('.invalid-feedback p')
+    expect( error.innerHTML ).toEqual("Birthday is required")
     
   })
 
-  xit('should display an error if the date field is empty', async () => {
+  it('should display an error if the email is invalid', async () => {
+    component.item = {...fakeData }
+    fixture.detectChanges()
+    await fixture.whenStable()
 
-    
+    const input = fixture.debugElement.nativeElement.querySelector('input[name="email"]')
+    input.value = "invalid/email"
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    await fixture.whenStable()
+
+    const error = input.closest('.form-group').querySelector('.invalid-feedback p')
+    expect( error.innerHTML ).toEqual("Must be a valid email address")
   })
 
-  xit('should display an error if the email is invalid', async () => {
+  it('should display an error if the email is empty', async () => {
+    component.item = {...fakeData }
+    fixture.detectChanges()
+    await fixture.whenStable()
 
-    
+    const input = fixture.debugElement.nativeElement.querySelector('input[name="email"]')
+    input.value = ""
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    await fixture.whenStable()
+
+    const error = input.closest('.form-group').querySelector('.invalid-feedback p')
+    expect( error.innerHTML ).toEqual("Email is required")
   })
 
-  xit('should display an error if the email is empty', async () => {
+  it('should submit the form', async () => {
+    component.item = {...fakeData }
+    fixture.detectChanges()
+    await fixture.whenStable()
 
+    const input = fixture.debugElement.nativeElement.querySelector('input[name="email"]')
+    input.value = "new@example.com"
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    spyOn(component, 'submit')
+
+    fixture.debugElement.nativeElement.querySelector('button[type="submit"]').click()
+    await fixture.whenStable()
+
+    expect( component.submit ).toHaveBeenCalled()
+  })
+
+  it('should call service on submit', () => {
+    component.item = {...fakeData }
+    fixture.detectChanges()
+
+    component.submit()
     
+    expect(userService.update).toHaveBeenCalled()
+  })
+
+  it('update progress bar on submit', () => {
+    component.item = {...fakeData }
+    fixture.detectChanges()
+
+    component.submit()
+    
+    expect(progressService.show).toHaveBeenCalled()
+    expect(progressService.hide).toHaveBeenCalled()
   })
 
 });
