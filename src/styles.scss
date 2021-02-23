@@ -59,13 +59,6 @@ body {
 .ngb-dp-weekdays {
     background-color: var(--light-purple-1);
 }
-.btn-link {
-    font-weight: 400;
-    color: var(--purple-2);
-}
-.btn-link:hover {
-    color: var(--purple-1);
-}
 
 img {
     max-width: 100%;
@@ -86,9 +79,6 @@ img {
     flex-direction: column;
 }
 
-.card {
-    margin-bottom: 20px;
-}
 
 
 .no-text-select {

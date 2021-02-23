@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { User } from '../user';
@@ -24,7 +23,6 @@ export class UsersComponent implements OnInit {
     private service: UserService,
     private progress: ProgressBarService,
     private error: ErrorService,
-     private route: ActivatedRoute, 
      private modal: NgbModal ) { 
     
   }
@@ -56,8 +54,6 @@ export class UsersComponent implements OnInit {
 
   open(user:User) {
 
-    // const ref = this.modal.open(UserModalComponent, { centered: true, backdrop: 'static' });
-    // ref.componentInstance.user = user
 
     this.progress.show()
     this.service.retrieve(user.username).pipe(
@@ -72,9 +68,6 @@ export class UsersComponent implements OnInit {
       }
     )
 
-
-
-    // console.log( user )
   }
 
 }

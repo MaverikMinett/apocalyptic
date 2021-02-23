@@ -35,15 +35,15 @@ export class UserService {
   }
 
   retrieve( username:string ) {
-    return this.http.get( `${this.apiPath}/${username}` )
+    return this.http.get<User>( `${this.apiPath}/${username}` )
   }
 
   retrieveCurrentUser() {
-    return this.http.get( `${this.apiPath}/current` )
+    return this.http.get<User>( `${this.apiPath}/current` )
   }
 
   update( username:string, data:{[key: string]: any} ) {
-    return this.http.post( `${this.apiPath}/${username}`, data )
+    return this.http.post<User>( `${this.apiPath}/${username}`, data )
   }
 
 }
