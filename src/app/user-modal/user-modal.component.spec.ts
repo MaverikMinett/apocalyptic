@@ -34,7 +34,7 @@ describe('UserModalComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should populate the window with use data', async () => {
+  it('should populate the window with user data', async () => {
     component.user = {...fakeData}
     fixture.detectChanges()
 
@@ -44,6 +44,15 @@ describe('UserModalComponent', () => {
     expect( fixture.debugElement.nativeElement.querySelector('.realname').innerHTML ).toEqual(fakeData.first_name + " " + fakeData.last_name)
     expect( fixture.debugElement.nativeElement.querySelector('.email').innerText ).toEqual(fakeData.email)
     expect( fixture.debugElement.nativeElement.querySelector('.birthday').innerText.trim() ).toEqual('01/01/2021')
+  })
+
+  it('should link to the users email address', async () => {
+    component.user = {...fakeData}
+    fixture.detectChanges()
+
+    await fixture.whenStable()
+
+    expect( fixture.debugElement.nativeElement.querySelector('.email a').getAttribute('href') ).toEqual("mailto:" + fakeData.email)
   })
 
 });

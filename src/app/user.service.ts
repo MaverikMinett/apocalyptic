@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment'
 
 import { Subject, of } from 'rxjs'
+import { map } from 'rxjs/operators'
 
 import { User } from './user'
 
@@ -22,29 +23,11 @@ export class UserService {
   }
 
   list() {
-    
-    /* quick and dirty caching */
-    if ( ! this.users ) {
-
-      const subject = new Subject()
-      const observable = subject.asObservable()
-
-      this.http.get( this.apiPath ).subscribe(
-        (users:Array<User>) => {
-          this.users = users
-          subject.next( users ); subject.complete();
-        },
-        (response) => {
-          subject.error( response )
-        }
-      )
-
-      return observable
-    }
-    else {
-      return of(this.users) 
-    }
-    
+    return this.users 
+    ? of(this.users)
+    : this.http.get<User[]>( this.apiPath ).pipe(
+      map( users => this.users = users )
+    )
   }
 
   clearUsers() {

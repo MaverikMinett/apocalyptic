@@ -228,5 +228,46 @@ describe('EditUserComponent', () => {
     expect(progressService.hide).toHaveBeenCalled()
   })
 
+
+  it('should have a disabled submit button if the form is not dirty', async () => {
+    component.item = {...fakeData }
+    fixture.detectChanges()
+
+    await fixture.whenStable()
+
+
+    expect( fixture.debugElement.nativeElement.querySelector('button[type="submit"]').hasAttribute('disabled') ).toBeTrue()
+  })
+
+
+  it('should enable the submit button if the form is dirty', async () => {
+    component.item = {...fakeData }
+    fixture.detectChanges()
+
+    await fixture.whenStable()
+
+    const input = fixture.debugElement.nativeElement.querySelector('input[name="email"]')
+    input.value = "new@example.com"
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    expect( fixture.debugElement.nativeElement.querySelector('button[type="submit"]').hasAttribute('disabled') ).toBeFalse()
+  })
+
+  it('should disable the submit button if the form is not valid', async () => {
+    component.item = {...fakeData }
+    fixture.detectChanges()
+
+    await fixture.whenStable()
+
+    const input = fixture.debugElement.nativeElement.querySelector('input[name="email"]')
+    input.value = ""
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    expect( fixture.debugElement.nativeElement.querySelector('button[type="submit"]').hasAttribute('disabled') ).toBeTrue()
+  })
+
+
 });
 
